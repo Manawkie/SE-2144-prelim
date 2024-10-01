@@ -3,36 +3,36 @@ const currDisplay = document.querySelector("#display")
 
 const greetings = [
     // Indo-European Languages
-    "Hello", // English
-    "Hola", // Spanish
-    "Bonjour", // French
-    "Hallo", // German
-    "Ciao", // Italian
-    "Здравствуйте", // Russian
-    "नमस्ते", // Hindi
-    "سلام", // Persian
-    "مرحبا", // Arabic
-    "שלום", // Hebrew,
+    "Hello boss", // English
+    "Hola boss", // Spanish
+    "Bonjour boss", // French
+    "Hallo boss", // German
+    "Ciao boss", // Italian
+    "Здравствуйте boss", // Russian
+    "नमस्ते boss", // Hindi
+    "سلام boss", // Persian
+    "مرحبا boss", // Arabic
+    "שלום boss", // Hebrew,
   
     // East Asian Languages
-    "你好", // Mandarin Chinese
-    "こんにちは", // Japanese
-    "안녕하세요", // Korean
-    "Xin chào", // Vietnamese,
+    "你好 boss", // Mandarin Chinese
+    "こんにちは boss", // Japanese
+    "안녕하세요 boss", // Korean
+    "Xin chào boss", // Vietnamese,
   
     // Southeast Asian Languages
-    "Kamusta", // Tagalog
-    "Selamat pagi", // Indonesian (good morning)
-    "Selamat siang", // Indonesian (good afternoon)
-    "Selamat malam", // Indonesian (good evening)
-    "สวัสดี", // Thai,
+    "Kamusta boss", // Tagalog
+    "Selamat pagi boss", // Indonesian (good morning)
+    "Selamat siang boss", // Indonesian (good afternoon)
+    "Selamat malam boss", // Indonesian (good evening)
+    "สวัสดี boss", // Thai,
   
     // Other Languages
-    "Olá", // Portuguese
-    "Hej", // Swedish
-    "Hallo", // Dutch
-    "Terve", // Finnish
-    "Sawubona" // Zulu
+    "Olá boss", // Portuguese
+    "Hej boss", // Swedish
+    "Hallo boss", // Dutch
+    "Terve boss", // Finnish
+    "Sawubona boss" // Zulu
   ];
 
   const operation = [
@@ -40,7 +40,8 @@ const greetings = [
     "-",
     "*",
     "/",
-    "."
+    ".",
+    undefined
   ];
 
 var isOn = false;
@@ -59,6 +60,7 @@ const helloButton = document.querySelector(".hello-button").addEventListener("cl
 
 
 const equalButton = document.querySelector(".equal-button").addEventListener("click", function() {
+    console.log(currDisplay.value[currDisplay.value.length -1])
     currDisplay.value = eval(currDisplay.value)
 });
 
@@ -72,7 +74,7 @@ const acButton = document.querySelector(".ac-button").addEventListener("click" ,
 
 
 const byeButton = document.querySelector(".bye-button").addEventListener("click", function() {
-    if (isOn != false) {
+    if (isOn === true) {
         currDisplay.value = "Goodbye"
         isOn = false
         setTimeout(() => {
@@ -106,10 +108,16 @@ const plusButton = document.querySelector(".plus-button").addEventListener("clic
 });
 const minusButton = document.querySelector(".minus-button").addEventListener("click", function() {
     if (isOn) {
-        if (!operation.includes(currDisplay.value[currDisplay.value.length -1])) {
+        // if (!operation.includes(currDisplay.value[currDisplay.value.length -1])) {
+        //     currDisplay.value += "-"
+        //     canPlacePeriod = true
+        // }
+
+        if (currDisplay.value[currDisplay.value.length -1] != "-") {
             currDisplay.value += "-"
             canPlacePeriod = true
         }}
+    
 });
 const multiplyButton = document.querySelector(".multiply-button").addEventListener("click", function () {
     if (isOn) {
@@ -125,6 +133,8 @@ const divideButton = document.querySelector(".divide-button").addEventListener("
             canPlacePeriod = true
         }}
 });
+
+
 const nineButton = document.querySelector(".nine-button").addEventListener("click" , function() {
     if (isOn) {currDisplay.value += 9}
 });
